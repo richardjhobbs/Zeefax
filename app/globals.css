@@ -1,42 +1,167 @@
+/* ─── Google Fonts: VT323 terminal bitmap font ──────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+/* ─── Reset ─────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ─── Colour tokens ──────────────────────────────────────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --tt-black:   #000000;
+  --tt-red:     #FF3333;
+  --tt-green:   #00FF66;
+  --tt-yellow:  #FFEE00;
+  --tt-blue:    #4488FF;
+  --tt-magenta: #FF00FF;
+  --tt-cyan:    #00FFFF;
+  --tt-white:   #FFFFFF;
+  --tt-gray:    #888888;
+  --tt-dim:     #333333;
+  --tt-orange:  #FF8800;
+  --tt-pink:    #FF66CC;
+
+  --screen-bg:       #000000;
+  --header-bg:       #00006A;
+  --footer-bg:       #000040;
+  --scanline-color:  rgba(0,255,180,0.03);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
+/* ─── HTML / body ─────────────────────────────────────────────────────────── */
+html, body {
+  height: 100%;
+  background: #0a0a0f;
+  color: var(--tt-white);
+  font-family: 'VT323', 'Courier New', Courier, monospace;
+  overflow: hidden;
+  -webkit-font-smoothing: none;
   -moz-osx-font-smoothing: grayscale;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+a { color: inherit; text-decoration: none; }
+
+/* ─── Outer wrapper ──────────────────────────────────────────────────────── */
+.zeefax-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background-image: radial-gradient(ellipse at center, #141420 0%, #050508 100%);
 }
 
-a {
-  color: inherit;
+/* ─── The scaled container ───────────────────────────────────────────────── */
+.zeefax-scaler {
+  transform-origin: center center;
+}
+
+/* ─── The 40×25 teletext screen ─────────────────────────────────────────── */
+.tt-screen {
+  font-family: 'VT323', 'Courier New', Courier, monospace;
+  font-size: 20px;
+  line-height: 1.25;
+  letter-spacing: 0;
+  background: var(--screen-bg);
+  width: 40ch;
+  height: calc(25 * 1.25em);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  box-shadow:
+    0 0 0 2px #111,
+    0 0 40px rgba(0, 200, 255, 0.12),
+    0 0 80px rgba(0, 100, 200, 0.06);
+  border: 1px solid #222;
+}
+
+/* CRT scanline overlay */
+.tt-screen::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 1px,
+    var(--scanline-color) 1px,
+    var(--scanline-color) 2px
+  );
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* ─── Teletext rows ──────────────────────────────────────────────────────── */
+.tt-row {
+  display: flex;
+  flex-direction: row;
+  height: 1.25em;
+  flex-shrink: 0;
+  white-space: pre;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: 1.25;
+  overflow: hidden;
+}
+
+.tt-row span {
+  display: inline-block;
+  white-space: pre;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  flex-shrink: 0;
+}
+
+/* ─── Clickable link rows ────────────────────────────────────────────────── */
+.tt-row-link {
+  cursor: pointer;
   text-decoration: none;
+  display: flex;
+  flex-direction: row;
+}
+.tt-row-link:hover .open-tag {
+  background: var(--tt-white) !important;
+  color: var(--tt-red) !important;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+/* ─── Page-flash animation ───────────────────────────────────────────────── */
+@keyframes page-flash {
+  0%   { opacity: 0; }
+  20%  { opacity: 0; }
+  100% { opacity: 1; }
+}
+.page-enter {
+  animation: page-flash 0.15s ease-out forwards;
+}
+
+/* ─── Cursor blink ───────────────────────────────────────────────────────── */
+@keyframes cursor-blink {
+  0%, 49%   { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+.cursor-char {
+  animation: cursor-blink 0.8s step-end infinite;
+}
+
+/* ─── NEW badge blink ─────────────────────────────────────────────────────── */
+@keyframes new-blink {
+  0%, 65%   { opacity: 1; }
+  66%, 100% { opacity: 0.15; }
+}
+.badge-new {
+  animation: new-blink 1.4s step-end infinite;
+}
+
+/* ─── HOT badge pulse ─────────────────────────────────────────────────────── */
+@keyframes hot-pulse {
+  0%, 50%   { opacity: 1; }
+  51%, 100% { opacity: 0.5; }
+}
+.badge-hot {
+  animation: hot-pulse 0.9s step-end infinite;
+}
+
+/* ─── Loading fill ────────────────────────────────────────────────────────── */
+@keyframes loading-fill {
+  0%   { width: 0;    }
+  100% { width: 100%; }
 }
