@@ -28,8 +28,18 @@ export const SECTIONS: SectionConfig[] = [
     ],
   },
   {
-    key: 'uknews',
+    key: 'world',
     page: 120,
+    name: 'World News',
+    shortName: 'WORLD NEWS',
+    color: 'blue',
+    feeds: [
+      { url: 'https://feeds.bbci.co.uk/news/world/rss.xml', name: 'BBC World' },
+    ],
+  },
+  {
+    key: 'uknews',
+    page: 130,
     name: 'UK News',
     shortName: 'UK NEWS',
     color: 'yellow',
@@ -39,7 +49,7 @@ export const SECTIONS: SectionConfig[] = [
   },
   {
     key: 'sport',
-    page: 130,
+    page: 140,
     name: 'Sport',
     shortName: 'SPORT',
     color: 'green',
@@ -49,7 +59,7 @@ export const SECTIONS: SectionConfig[] = [
   },
   {
     key: 'business',
-    page: 140,
+    page: 150,
     name: 'Business',
     shortName: 'BUSINESS',
     color: 'cyan',
@@ -59,24 +69,12 @@ export const SECTIONS: SectionConfig[] = [
   },
   {
     key: 'culture',
-    page: 150,
+    page: 160,
     name: 'Culture',
     shortName: 'CULTURE',
     color: 'magenta',
     feeds: [
-      // BBC combines arts & culture into a single feed
       { url: 'https://feeds.bbci.co.uk/news/entertainment_and_arts/rss.xml', name: 'BBC Arts' },
-    ],
-  },
-  {
-    key: 'entertainment',
-    page: 160,
-    name: 'Entertainment',
-    shortName: 'ENTERTAINMENT',
-    color: 'white',
-    feeds: [
-      // BBC combines arts & entertainment into a single feed
-      { url: 'https://feeds.bbci.co.uk/news/entertainment_and_arts/rss.xml', name: 'BBC Ents' },
     ],
   },
 ];
