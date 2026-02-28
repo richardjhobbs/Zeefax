@@ -76,7 +76,7 @@ export function buildHomePage(data: AllFeedsData, now: Date): ScreenRow[] {
   rows.push({ segments: [seg(centre('  Z E E F A X', COLS), 'yellow', 'blue')] });
   rows.push({ segments: [seg(centre('RETRO NEWS TERMINAL', COLS), 'white',  'blue')] });
 
-  // Remaining rows: 3–22 = 20 rows for 7 sections (some get 3, some 2)
+  // Remaining rows: 3–22 = 20 rows for 6 sections (some get 3, some 2)
   for (let i = 0; i < SECTIONS.length; i++) {
     const sec  = SECTIONS[i];
     const feed = data[sec.key];
@@ -317,13 +317,12 @@ export function buildAboutPage(now: Date): ScreenRow[] {
     '',
     '  NAVIGATE WITH PAGE NUMBERS:',
     '  100  HOME',
-    '  110  GENERATIVE AI',
-    '  120  FASHION DESIGNERS',
-    '  130  ARCHITECTURE',
-    '  140  CONSUMER PRODUCTS',
-    '  150  URBAN PLANNING',
-    '  160  DIGITAL DESIGN',
-    '  170  FRONTIER TECH',
+    '  110  BREAKING NEWS',
+    '  120  UK NEWS',
+    '  130  SPORT',
+    '  140  BUSINESS',
+    '  150  CULTURE',
+    '  160  ENTERTAINMENT',
     '',
     '  ADD +1 FOR NEW TODAY',
     '  ADD +2 FOR SIGNALS',
@@ -342,7 +341,7 @@ export function buildAboutPage(now: Date): ScreenRow[] {
   while (rows.length < 23) rows.push({ segments: emptyRow() });
 
   rows.push({ segments: [
-    seg(centre('100:HOME  110:AI  120:FASHION', COLS), 'gray', 'black'),
+    seg(centre('100:HOME  110:BREAKING  120:UK', COLS), 'gray', 'black'),
   ]});
 
   return rows.slice(0, 24);
@@ -362,13 +361,12 @@ export function buildNotFoundPage(pageNum: number, now: Date): ScreenRow[] {
   rows.push({ segments: [seg(centre('VALID PAGES:', COLS), 'white', 'black')] });
   rows.push({ segments: emptyRow() });
   rows.push({ segments: [seg(centre('100  HOME', COLS), 'cyan', 'black')] });
-  rows.push({ segments: [seg(centre('110  GENERATIVE AI', COLS), 'cyan', 'black')] });
-  rows.push({ segments: [seg(centre('120  FASHION', COLS), 'magenta', 'black')] });
-  rows.push({ segments: [seg(centre('130  ARCHITECTURE', COLS), 'green', 'black')] });
-  rows.push({ segments: [seg(centre('140  CONSUMER PRODUCTS', COLS), 'yellow', 'black')] });
-  rows.push({ segments: [seg(centre('150  URBAN PLANNING', COLS), 'white', 'black')] });
-  rows.push({ segments: [seg(centre('160  DIGITAL DESIGN', COLS), 'blue', 'black')] });
-  rows.push({ segments: [seg(centre('170  FRONTIER TECH', COLS), 'red', 'black')] });
+  rows.push({ segments: [seg(centre('110  BREAKING NEWS', COLS), 'red', 'black')] });
+  rows.push({ segments: [seg(centre('120  UK NEWS', COLS), 'yellow', 'black')] });
+  rows.push({ segments: [seg(centre('130  SPORT', COLS), 'green', 'black')] });
+  rows.push({ segments: [seg(centre('140  BUSINESS', COLS), 'cyan', 'black')] });
+  rows.push({ segments: [seg(centre('150  CULTURE', COLS), 'magenta', 'black')] });
+  rows.push({ segments: [seg(centre('160  ENTERTAINMENT', COLS), 'white', 'black')] });
   rows.push({ segments: [seg(centre('199  ABOUT', COLS), 'gray', 'black')] });
 
   while (rows.length < 23) rows.push({ segments: emptyRow() });

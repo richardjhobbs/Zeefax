@@ -18,89 +18,65 @@ export interface SectionConfig {
 
 export const SECTIONS: SectionConfig[] = [
   {
-    key: 'ai',
+    key: 'breaking',
     page: 110,
-    name: 'Generative AI',
-    shortName: 'GENERATIVE AI',
-    color: 'cyan',
-    feeds: [
-      { url: 'https://rss.arxiv.org/rss/cs.AI',           name: 'arXiv·AI'  },
-      { url: 'https://rss.arxiv.org/rss/cs.CL',           name: 'arXiv·NLP' },
-      { url: 'https://rss.arxiv.org/rss/cs.LG',           name: 'arXiv·ML'  },
-      { url: 'https://news.ycombinator.com/rss',           name: 'HackerNews'},
-      { url: 'https://www.technologyreview.com/feed/',     name: 'MIT TechRev'},
-    ],
-  },
-  {
-    key: 'fashion',
-    page: 120,
-    name: 'Fashion Designers',
-    shortName: 'FASHION',
-    color: 'magenta',
-    feeds: [
-      { url: 'https://www.dezeen.com/design/feed/',        name: 'Dezeen Design' },
-      { url: 'https://fashionunited.com/rss',              name: 'FashionUnited' },
-      { url: 'https://www.harpersbazaar.com/rss/all.xml/', name: 'Harper\'s Bazaar' },
-    ],
-  },
-  {
-    key: 'architecture',
-    page: 130,
-    name: 'Architecture',
-    shortName: 'ARCHITECTURE',
-    color: 'green',
-    feeds: [
-      { url: 'https://www.dezeen.com/architecture/feed/',   name: 'Dezeen'    },
-      { url: 'https://feeds.feedburner.com/Archdaily',      name: 'ArchDaily' },
-      { url: 'https://www.architectural-review.com/feed',   name: 'AR'        },
-    ],
-  },
-  {
-    key: 'products',
-    page: 140,
-    name: 'Consumer Products',
-    shortName: 'CONSUMER PRODUCTS',
-    color: 'yellow',
-    feeds: [
-      { url: 'https://design-milk.com/feed/',     name: 'Design Milk' },
-      { url: 'https://www.yankodesign.com/feed/', name: 'Yanko'       },
-      { url: 'https://www.dezeen.com/design/feed/', name: 'Dezeen'    },
-    ],
-  },
-  {
-    key: 'urban',
-    page: 150,
-    name: 'Urban Planning',
-    shortName: 'URBAN PLANNING',
-    color: 'white',
-    feeds: [
-      { url: 'https://www.dezeen.com/architecture/feed/',  name: 'Dezeen'     },
-      { url: 'https://feeds.feedburner.com/Archdaily',      name: 'ArchDaily'  },
-      { url: 'https://www.theurbanist.org/feed/',          name: 'Urbanist'   },
-    ],
-  },
-  {
-    key: 'digital',
-    page: 160,
-    name: 'Digital Design',
-    shortName: 'DIGITAL DESIGN',
-    color: 'blue',
-    feeds: [
-      { url: 'https://www.smashingmagazine.com/feed/', name: 'Smashing'    },
-      { url: 'https://uxdesign.cc/feed',               name: 'UX Collect'  },
-      { url: 'https://www.creativebloq.com/feeds/all.atom.xml', name: 'CreativeBloq' },
-    ],
-  },
-  {
-    key: 'frontier',
-    page: 170,
-    name: 'Frontier Tech',
-    shortName: 'FRONTIER TECH',
+    name: 'Breaking News',
+    shortName: 'BREAKING NEWS',
     color: 'red',
     feeds: [
-      { url: 'https://spectrum.ieee.org/feeds/feed.rss',    name: 'IEEE Spectrum' },
-      { url: 'https://www.technologyreview.com/feed/',      name: 'MIT Tech Rev'  },
-      { url: 'https://rss.arxiv.org/rss/cs.RO',            name: 'arXiv·Robotics'},
+      { url: 'https://feeds.bbci.co.uk/news/rss.xml', name: 'BBC News' },
+    ],
+  },
+  {
+    key: 'uknews',
+    page: 120,
+    name: 'UK News',
+    shortName: 'UK NEWS',
+    color: 'yellow',
+    feeds: [
+      { url: 'https://feeds.bbci.co.uk/news/uk/rss.xml', name: 'BBC UK' },
+    ],
+  },
+  {
+    key: 'sport',
+    page: 130,
+    name: 'Sport',
+    shortName: 'SPORT',
+    color: 'green',
+    feeds: [
+      { url: 'https://feeds.bbci.co.uk/sport/rss.xml', name: 'BBC Sport' },
+    ],
+  },
+  {
+    key: 'business',
+    page: 140,
+    name: 'Business',
+    shortName: 'BUSINESS',
+    color: 'cyan',
+    feeds: [
+      { url: 'https://feeds.bbci.co.uk/news/business/rss.xml', name: 'BBC Business' },
+    ],
+  },
+  {
+    key: 'culture',
+    page: 150,
+    name: 'Culture',
+    shortName: 'CULTURE',
+    color: 'magenta',
+    feeds: [
+      // BBC combines arts & culture into a single feed
+      { url: 'https://feeds.bbci.co.uk/news/entertainment_and_arts/rss.xml', name: 'BBC Arts' },
+    ],
+  },
+  {
+    key: 'entertainment',
+    page: 160,
+    name: 'Entertainment',
+    shortName: 'ENTERTAINMENT',
+    color: 'white',
+    feeds: [
+      // BBC combines arts & entertainment into a single feed
+      { url: 'https://feeds.bbci.co.uk/news/entertainment_and_arts/rss.xml', name: 'BBC Ents' },
     ],
   },
 ];

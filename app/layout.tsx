@@ -4,7 +4,7 @@ import './globals.css';
 export const metadata: Metadata = {
   title: 'ZEEFAX — Retro News Terminal',
   description:
-    'Teletext-style news aggregator covering generative AI, fashion, architecture, urban planning, digital design and frontier technology.',
+    'Teletext-style BBC news aggregator covering breaking news, UK news, sport, business, culture and entertainment.',
 };
 
 export const viewport: Viewport = {
